@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private float elapsedTime = 0f;
+    private float score = 0f;
+public float scoreMultiplier = 10f;
     public float thrustForce = 1f;
     Rigidbody2D rb;
 
@@ -13,6 +16,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        elapsedTime += Time.deltaTime;
+        score = elapsedTime * scoreMultiplier;
+        Debug.Log("Score: " + score);
+
         if (Mouse.current.leftButton.isPressed)
         {
             // Calculate mouse direction
@@ -30,3 +38,4 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
